@@ -18,18 +18,17 @@ namespace LongestCommonSubsequence
                     Console.Write("Enter Text: ");
                     txtData = Console.ReadLine();
 
-                } while (string.IsNullOrEmpty(txtData) || txtData.Split(';').Length != 2);
+                } while (string.IsNullOrEmpty(txtData) || txtData.TrimEnd(';').Split(';').Length != 2);
                 string str1 = string.Empty;
                 string str2 = string.Empty;
-                if (!String.IsNullOrEmpty(txtData) && txtData.Split(';').Length == 2)
+                if (!String.IsNullOrEmpty(txtData) && txtData.TrimEnd(';').Split(';').Length == 2)
                 {
                     str1 = txtData.Split(';')[0];
                     str2 = txtData.Split(';')[1];
                     str1 = str1?.Length > 50 ? str1.Substring(0, 50) : str1;
                     str2 = str2?.Length > 50 ? str2.Substring(0, 50) : str2;
                     string lcs = LongestCommonSubsequence(str1, str2);
-
-                    Console.WriteLine("Longest common subsequence: " + lcs.Trim());
+                    Console.WriteLine("Longest common subsequence: " + (lcs.Trim()?.Length > 0 ? lcs.Trim() : "Not found"));
 
                 }
             }
